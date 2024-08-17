@@ -62,7 +62,7 @@ def _gen_quimb_gates(
             yield quimb.tensor.Gate("CCZ", params=[], qubits=qubits, **kwargs)
         case "cp":
             (theta,) = op.params
-            yield quimb.tensor.Gate("CU1", params=[theta], qubits=qubits, **kwargs)
+            yield quimb.tensor.Gate("CPHASE", params=[theta], qubits=qubits, **kwargs)
         case "cx":
             yield quimb.tensor.Gate("CX", params=[], qubits=qubits, **kwargs)
         case "cy":
@@ -82,7 +82,7 @@ def _gen_quimb_gates(
             )
         case "p":
             (theta,) = op.params
-            yield quimb.tensor.Gate("U1", params=[theta], qubits=qubits, **kwargs)
+            yield quimb.tensor.Gate("PHASE", params=[theta], qubits=qubits, **kwargs)
         case "rx":
             (theta,) = op.params
             yield quimb.tensor.Gate("RX", params=[theta], qubits=qubits, **kwargs)
@@ -126,13 +126,12 @@ def _gen_quimb_gates(
             yield quimb.tensor.Gate("X", params=[], qubits=qubits, **kwargs)
         case "xx_plus_yy":
             theta, beta = op.params
-            phi = beta + 0.5 * math.pi
-            a, b = qubits
-            yield quimb.tensor.Gate("RZ", params=[phi], qubits=[a], **kwargs)
             yield quimb.tensor.Gate(
-                "GIVENS", params=[0.5 * theta], qubits=[a, b], **kwargs
+                "GIVENS2",
+                params=[0.5 * theta, beta + 0.5 * math.pi],
+                qubits=qubits,
+                **kwargs,
             )
-            yield quimb.tensor.Gate("RZ", params=[-phi], qubits=[a], **kwargs)
         case "y":
             yield quimb.tensor.Gate("Y", params=[], qubits=qubits, **kwargs)
         case "z":
