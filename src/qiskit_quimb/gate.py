@@ -239,8 +239,6 @@ def _gen_quimb_gates(
     op: Instruction, qubits: Sequence[int], **kwargs
 ) -> Iterator[quimb.tensor.Gate]:
     """Convert a Qiskit gate to quimb gates."""
-    name = op.name
-    if name == "barrier":
-        pass
-    else:
-        yield quimb_gate(op, qubits, **kwargs)
+    val = quimb_gate(op, qubits, **kwargs)
+    if val is not None:
+        yield val
