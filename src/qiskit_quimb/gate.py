@@ -190,6 +190,12 @@ def _(op: Instruction, qubits: Sequence[int], kwargs: dict[str, Any]):
     return quimb.tensor.Gate("U3", params=[theta, phi, lam], qubits=qubits, **kwargs)
 
 
+@_register_gate_func("u")
+def _(op: Instruction, qubits: Sequence[int], kwargs: dict[str, Any]):
+    (theta, phi, lam) = op.params
+    return quimb.tensor.Gate("U3", params=[theta, phi, lam], qubits=qubits, **kwargs)
+
+
 @_register_gate_func("x")
 def _(op: Instruction, qubits: Sequence[int], kwargs: dict[str, Any]):
     return quimb.tensor.Gate("X", params=[], qubits=qubits, **kwargs)

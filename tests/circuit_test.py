@@ -42,6 +42,7 @@ from qiskit.circuit.library import (
     U1Gate,
     U2Gate,
     U3Gate,
+    UGate,
     XGate,
     XXMinusYYGate,
     XXPlusYYGate,
@@ -99,6 +100,9 @@ def test_quimb_circuit():
     circuit.append(U2Gate(rng.uniform(-10, 10), rng.uniform(-10, 10)), [d])
     circuit.append(
         U3Gate(rng.uniform(-10, 10), rng.uniform(-10, 10), rng.uniform(-10, 10)), [d]
+    )
+    circuit.append(
+        UGate(rng.uniform(-10, 10), rng.uniform(-10, 10), rng.uniform(-10, 10)), [d]
     )
     circuit.append(CCXGate(), [a, b, c])
     circuit.append(CCZGate(), [a, b, c])
