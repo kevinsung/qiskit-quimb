@@ -8,7 +8,7 @@ Simulate [Qiskit](https://www.ibm.com/quantum/qiskit) circuits using [quimb](htt
 
 ## Documentation
 
-Documentation is located at the [project website](https://qiskit-community.github.io/qiskit-quimb/).
+Documentation is at the [project website](https://qiskit-community.github.io/qiskit-quimb/).
 
 ## Installation
 
